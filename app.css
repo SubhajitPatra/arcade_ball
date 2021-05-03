@@ -25,6 +25,8 @@
     position: fixed;
     margin-top: -10px;
     margin-left: -10px;
+    transition: all linear;
+
   }
   #gamestate_status{
     background-color: #a1d487;
