@@ -1,8 +1,9 @@
 var platform= document.getElementById("platform")
+var width= document.getElementById("gamebody").clientWidth;
 var ball= document.getElementById("ball")
 var paddle=document.getElementById("paddle")
 var posBX= 489;
-var posBY= 400;
+var posBY= width/2;
 var posPX= 500;
 var posPY= 400;
 var gamestate = "reset"
@@ -13,6 +14,8 @@ var dirBX= false;
 var dirBY= false;
 var playloop= null;
 var score=0;
+var windowwidth;
+
 window.addEventListener("mousemove", (e)=>{
   
   if(e.clientX>800-50){
@@ -63,6 +66,7 @@ function waitingForStart(){
 function moveball(){
   
   //check ball is touching the paddle or the bottom side of platform
+  console.log("executing move ball; position of ball:" ,posBX, posBY)
   if(posBX>490){
     console.log("posBX: ", posBX, " | posBY: ", posBY , " | posPX: ", posPX, " | posPY: ", posPY  )
     if(Math.abs(posBY-posPY)<= 50){
@@ -102,7 +106,7 @@ function animate(elem,moveUnit) {
     } 
     else { 
       i++;
-      if(posBX>490){
+      if(posBX>495){
         dirBX= false;
       }
       if(posBX< 10){
