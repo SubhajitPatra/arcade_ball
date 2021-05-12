@@ -1,11 +1,14 @@
 var platform= document.getElementById("platform")
-var width= document.getElementById("gamebody").clientWidth;
+var top= platform.clientTop;
+var left= platform.clientLeft;
+var bottom= top + 500;
+var right= right + 800;
 var ball= document.getElementById("ball")
 var paddle=document.getElementById("paddle")
-var posBX= 489;
-var posBY= width/2;
-var posPX= 500;
-var posPY= 400;
+var posBX= bottom-10;
+var posBY= (left+right)/2;
+var posPX= bottom;
+var posPY= (left+right)/2;
 var gamestate = "reset"
 var gameinfo= document.getElementById("gameinfo");
 var gamestate_status= document.getElementById("gamestate_status");
@@ -14,15 +17,13 @@ var dirBX= false;
 var dirBY= false;
 var playloop= null;
 var score=0;
-var windowwidth;
-
 window.addEventListener("mousemove", (e)=>{
   
-  if(e.clientX>800-50){
-    paddle.style.left= 750;
+  if(e.clientX>right-50){
+    paddle.style.left= right-50;
   }
-  else if(e.clientX<0+50){
-    paddle.style.left=50;
+  else if(e.clientX<left+50){
+    paddle.style.left=left+50;
   }
   else{
     paddle.style.left= e.clientX +"px";
@@ -67,8 +68,9 @@ function moveball(){
   
   //check ball is touching the paddle or the bottom side of platform
   console.log("executing move ball; position of ball:" ,posBX, posBY)
-  if(posBX>490){
-    console.log("posBX: ", posBX, " | posBY: ", posBY , " | posPX: ", posPX, " | posPY: ", posPY  )
+  if(posBX>(bottom-10)){
+    // console.log("posBX: ", posBX, " | posBY: ", posBY , " | posPX: ", posPX, " | posPY: ", posPY  )
+    console.log("top: ", top, " | left: ", left , " | bottom: ", bottom, " | right: ", right  )
     if(Math.abs(posBY-posPY)<= 50){
       moveDisUnit++;
       score++;
@@ -106,16 +108,16 @@ function animate(elem,moveUnit) {
     } 
     else { 
       i++;
-      if(posBX>495){
+      if(posBX>(bottom-5)){
         dirBX= false;
       }
-      if(posBX< 10){
+      if(posBX< (top+10)){
         dirBX= true;
       }
-      if(posBY>790){
+      if(posBY> right-10){
         dirBY= false;
       }
-      if(posBY<10){
+      if(posBY<(left+10)){
         dirBY= true;
       }
       posBX= dirBX?posBX+ 1 : posBX-1; 

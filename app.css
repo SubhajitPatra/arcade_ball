@@ -3,12 +3,14 @@
       height: 500px;
       width: 800px;
       background-image: url('https://img.freepik.com/free-vector/abstract-violet-pixel-rain-background_23-2148362568.jpg?size=626&ext=jpg');
+      background-size: cover;
   }
   body{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient( 90deg, #21dec0, #1f7f2a);
   }
   *{
     margin: 0px;
@@ -21,7 +23,7 @@
     background-image: linear-gradient( #00ffcd, #23dc30);
     border-radius: 5px;
     display: block;
-    position: fixed;
+    position: absolute;
     margin-top: -5px;
     margin-left: -50px;
   }
@@ -31,7 +33,7 @@
     border-radius: 50%;
     background-image: linear-gradient(yellow, orange, red);
     display: block;
-    position: fixed;
+    position: absolute;
     margin-top: -10px;
     margin-left: -10px;
     transition: all linear;
