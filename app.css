@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 #platform{
     background-color: #ff7bb5;
       height: 500px;
@@ -43,14 +43,15 @@
 
   }
   #gamestate_status{
-    background-color: #a1d487;
+    top: 5px;
+    text-align: center;
     display: block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    position: fixed;
+    color: white;
+    font-family: 'Zen Dots', cursive;
   }
   #gameinfo{
-   top: 10px;
+   top: 30px;
     text-align: center;
     display: block;
     position: fixed;
