@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
+
 #platform{
     background-color: #ff7bb5;
       height: 500px;
@@ -49,9 +51,9 @@
   }
   #gameinfo{
    top: 10px;
-    left: 400px;
     text-align: center;
     display: block;
     position: fixed;
-    
+    color: white;
+    font-family: 'Girassol', cursive;
   }
