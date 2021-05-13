@@ -1,12 +1,15 @@
 var platform= document.getElementById("platform")
-var width= document.getElementById("gamebody").clientWidth;
-var ball= document.getElementById("ball")
-var paddle=document.getElementById("paddle")
-var posBX= 489;
-var posBY= width/2;
-var posPX= 500;
-var posPY= 400;
-var gamestate = "reset"
+var topLimit= platform.offsetTop;
+var leftLimit= platform.offsetLeft;
+var bottomLimit= topLimit + 500;
+var rightLimit= leftLimit + 800;
+var ball = document.getElementById("ball");
+var paddle = document.getElementById("paddle");
+var posBX= bottomLimit-10;
+var posBY= (leftLimit+rightLimit)/2;
+var posPX= bottomLimit;
+var posPY= (leftLimit+rightLimit)/2;
+var gamestate = "reset";
 var gameinfo= document.getElementById("gameinfo");
 var gamestate_status= document.getElementById("gamestate_status");
 var moveDisUnit=5;
@@ -14,19 +17,17 @@ var dirBX= false;
 var dirBY= false;
 var playloop= null;
 var score=0;
-var windowwidth;
-
 window.addEventListener("mousemove", (e)=>{
-  
-  if(e.clientX>800-50){
-    paddle.style.left= 750;
+  paddle.style.top = bottomLimit + "px";
+  if(e.clientX>rightLimit-50){
+    paddle.style.left= rightLimit-50;
   }
-  else if(e.clientX<0+50){
-    paddle.style.left=50;
+  else if(e.clientX<leftLimit+50){
+    paddle.style.left=leftLimit+50;
   }
   else{
     paddle.style.left= e.clientX +"px";
-    posPY= e.clientX
+    posPY = e.clientX;
   }
 })
 window.addEventListener("load",(e)=>{
@@ -45,7 +46,7 @@ window.addEventListener("keydown",(e)=>{
   }
   if(gamestate==="reset"){
     beforestart();  
-
+    clearInterval(playloop);
   }
 })
 function beforestart(){
@@ -66,9 +67,23 @@ function waitingForStart(){
 function moveball(){
   
   //check ball is touching the paddle or the bottom side of platform
-  console.log("executing move ball; position of ball:" ,posBX, posBY)
-  if(posBX>490){
+  // console.log("executing move ball; position of ball:", posBX, posBY)
+    console.log(
+      "top: ",
+      topLimit,
+      " | left: ",
+      leftLimit,
+      " | bottom: ",
+      bottomLimit,
+      " | right: ",
+      rightLimit,
+      " | poxPX: ",
+      posPX
+    );
+  
+  if(posBX>(bottomLimit-10)){
     console.log("posBX: ", posBX, " | posBY: ", posBY , " | posPX: ", posPX, " | posPY: ", posPY  )
+    // console.log("top: ", topLimit, " | left: ", leftLimit , " | bottom: ", bottomLimit, " | right: ", rightLimit  )
     if(Math.abs(posBY-posPY)<= 50){
       moveDisUnit++;
       score++;
@@ -106,16 +121,16 @@ function animate(elem,moveUnit) {
     } 
     else { 
       i++;
-      if(posBX>495){
+      if(posBX>(bottomLimit-5)){
         dirBX= false;
       }
-      if(posBX< 10){
+      if(posBX< (topLimit+10)){
         dirBX= true;
       }
-      if(posBY>790){
+      if(posBY> rightLimit-10){
         dirBY= false;
       }
-      if(posBY<10){
+      if(posBY<(leftLimit+10)){
         dirBY= true;
       }
       posBX= dirBX?posBX+ 1 : posBX-1; 

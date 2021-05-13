@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 #platform{
     background-color: #ff7bb5;
       height: 500px;
       width: 800px;
       background-image: url('https://img.freepik.com/free-vector/abstract-violet-pixel-rain-background_23-2148362568.jpg?size=626&ext=jpg');
+      background-size: cover;
   }
   body{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-image: linear-gradient( 90deg, #21dec0, #1f7f2a);
   }
   *{
     margin: 0px;
@@ -21,7 +25,7 @@
     background-image: linear-gradient( #00ffcd, #23dc30);
     border-radius: 5px;
     display: block;
-    position: fixed;
+    position: absolute;
     margin-top: -5px;
     margin-left: -50px;
   }
@@ -31,7 +35,7 @@
     border-radius: 50%;
     background-image: linear-gradient(yellow, orange, red);
     display: block;
-    position: fixed;
+    position: absolute;
     margin-top: -10px;
     margin-left: -10px;
     transition: all linear;
@@ -39,17 +43,18 @@
 
   }
   #gamestate_status{
-    background-color: #a1d487;
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
-  #gameinfo{
-   top: 10px;
-    left: 400px;
+    top: 5px;
     text-align: center;
     display: block;
     position: fixed;
-    
+    color: white;
+    font-family: 'Zen Dots', cursive;
+  }
+  #gameinfo{
+   top: 30px;
+    text-align: center;
+    display: block;
+    position: fixed;
+    color: white;
+    font-family: 'Girassol', cursive;
   }
